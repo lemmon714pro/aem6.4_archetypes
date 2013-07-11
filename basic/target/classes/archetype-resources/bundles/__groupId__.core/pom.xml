@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${appsFolderName}-bundles</artifactId>
+        <version>${version}</version>
+    </parent>
+    <artifactId>${groupId}.core</artifactId>
+    <packaging>bundle</packaging>
+    <name>${artifactName} - Core Bundle</name>
+    <description>Core project for ${artifactName} bundles. Contains shared code.</description>
+    <properties>
+        <bundle.export>
+            ${package}.core.bundle,
+            ${package}.core.configuration
+        </bundle.export>
+        <bundle.private>
+            ${package}.core.configuration.impl,
+            ${package}.core.servlet
+        </bundle.private>
+        <bundle.activator>${package}.core.bundle.Activator</bundle.activator>
+    </properties>
+</project>

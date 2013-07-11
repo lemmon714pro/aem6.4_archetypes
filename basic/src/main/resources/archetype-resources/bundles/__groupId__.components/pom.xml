@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${appsFolderName}-bundles</artifactId>
+        <version>${version}</version>
+    </parent>
+    <artifactId>${groupId}.components</artifactId>
+    <packaging>bundle</packaging>
+    <name>${artifactName} - Components Bundle</name>
+    <description>OSGi bundle for ${artifactName} components code and Slice models</description>
+    <properties>
+        <bundle.export>
+            ${package}.components.model
+        </bundle.export>
+        <bundle.private>
+        </bundle.private>
+    </properties>
+</project>

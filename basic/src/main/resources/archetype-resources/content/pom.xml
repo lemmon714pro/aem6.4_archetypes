@@ -1,0 +1,267 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- Content package project configuration
+	
+		Contains:		
+		- Content package build configurations
+		- Package Install profile configuration
+		- Code quality check profile configuration
+		
+		All OSGi bundles that should be deployed with package 
+		should be declared as project dependencies and listed in 
+		embeddeds section of content-package-maven-plugin configuration
+			
+	-->
+	<!-- ====================================================================== -->
+
+	<parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
+	</parent>
+	<artifactId>${appsFolderName}-content-package</artifactId>
+	<packaging>content-package</packaging>
+	<name>${artifactName} - WCMS Content Package</name>
+	<description>Project contains jcr tree for ${artifactName}</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${groupId}.components</artifactId>
+			<version>${version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${groupId}.core</artifactId>
+			<version>${version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice</groupId>
+			<artifactId>slice-core-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice</groupId>
+			<artifactId>slice-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice</groupId>
+			<artifactId>slice-mapper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice</groupId>
+			<artifactId>slice-mapper-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice</groupId>
+			<artifactId>slice-validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice</groupId>
+			<artifactId>slice-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice-addon</groupId>
+			<artifactId>slice-cq56</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cognifide.slice-addon</groupId>
+			<artifactId>slice-cq56-taglib</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/content/META-INF</directory>
+				<targetPath>../vault-work/META-INF</targetPath>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/content/jcr_root</directory>
+				<targetPath>../vault-work/jcr_root</targetPath>
+				<excludes>
+					<exclude>**/.vlt</exclude>
+					<exclude>**/.vltignore</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>com.day.jcr.vault</groupId>
+				<artifactId>content-package-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<name>${project.artifactId}</name>
+					<groupId>${project.groupId}</groupId>
+					<version>${project.version}</version>
+					<builtContentDirectory>jcr_root</builtContentDirectory>
+					<userId>${sling.user}</userId>
+					<password>${sling.password}</password>
+					<targetURL>${sling.server}/crx/packmgr/service.jsp</targetURL>
+					<failOnError>true</failOnError>
+					<useProxy>false</useProxy>
+					<embeddedTarget>${sling.bundles.install.path}</embeddedTarget>
+					<embeddeds>
+						<embedded>
+							<groupId>${groupId}</groupId>
+							<artifactId>${groupId}.components</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>${groupId}</groupId>
+							<artifactId>${groupId}.core</artifactId>
+						</embedded>
+						<!-- Slice -->
+						<embedded>
+							<groupId>com.cognifide.slice</groupId>
+							<artifactId>slice-core-api</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice</groupId>
+							<artifactId>slice-core</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice</groupId>
+							<artifactId>slice-mapper</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice</groupId>
+							<artifactId>slice-mapper-api</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice</groupId>
+							<artifactId>slice-validation-api</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice</groupId>
+							<artifactId>slice-validation</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice-addon</groupId>
+							<artifactId>slice-cq56</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.cognifide.slice-addon</groupId>
+							<artifactId>slice-cq56-taglib</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>javax.inject</groupId>
+							<artifactId>com.springsource.javax.inject</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>org.aopalliance</groupId>
+							<artifactId>com.springsource.org.aopalliance</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>com.google.inject</groupId>
+							<artifactId>guice</artifactId>
+						</embedded>
+						<embedded>
+							<groupId>org.ops4j</groupId>
+							<artifactId>peaberry</artifactId>
+						</embedded>
+					</embeddeds>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<includeEmptyDirs>true</includeEmptyDirs>
+					<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>installPackage</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.day.jcr.vault</groupId>
+						<artifactId>content-package-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>install-content-package</id>
+								<phase>install</phase>
+								<goals>
+									<goal>install</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>runChecks</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>checkstyle</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<configLocation>${project.basedir}/../qa-rulesets/checkstyle.xml</configLocation>
+							<encoding>UTF-8</encoding>
+							<violationSeverity>error</violationSeverity>
+							<logViolationsToConsole>true</logViolationsToConsole>
+							<includes>\.(js|jsp|css)$</includes>
+							<failOnViolation>false</failOnViolation>
+							<!-- TODO temporary option for a 'transition' phase, set to true afterwards -->
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-pmd-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>pmd</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<sourceEncoding>UTF-8</sourceEncoding>
+							<failurePriority>2</failurePriority>
+							<includes>
+								<include>**/*.jsp</include>
+								<include>**/*.js</include>
+								<include>**/*.css</include>
+							</includes>
+							<rulesets>
+								<ruleset>${project.basedir}/../qa-rulesets/pmd.xml</ruleset>
+							</rulesets>
+							<targetJdk>1.6</targetJdk>
+							<outputDirectory>target/pmd-reports</outputDirectory>
+							<verbose>true</verbose>
+							<failOnViolation>false</failOnViolation>
+							<!-- TODO temporary option for a 'transition' phase, set to true afterwards -->
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

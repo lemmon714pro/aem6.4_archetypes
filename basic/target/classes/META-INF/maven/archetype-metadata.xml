@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+        name="cq5-basic-archetype"
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <requiredProperties>
+        <!--
+           This is the folder under /apps into which the bundle and package content will be installed.
+           This is to some extent the ID of your CQ application, so set it carefully!
+           Example: "sampleapp"
+        -->
+        <requiredProperty key="appsFolderName"/>
+        <!--
+           This is the descriptive name which will be set as the CQ artifact name (i.e. "Sample Project Site").
+           Example: "Development Central Site"
+        -->
+        <requiredProperty key="artifactName"/>
+        <!--
+           This is the group identifier for the CQ package. Used within the Package Manager and Package Share.
+           Example: "sampleapp-content-1.0"
+        -->
+        <requiredProperty key="packageGroup">
+            <defaultValue>${appsFolderName}-content-${version}</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+            <directory>qa-rulesets</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+    <modules>
+        <module id="${rootArtifactId}-bundles" dir="bundles" name="${rootArtifactId}-bundles">
+            <fileSets>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>__groupId__.components</directory>
+                    <includes>
+                        <include>**/pom.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>__groupId__.components/src/main/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>__groupId__.components/src/test/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>__groupId__.components/src/main/resources</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>__groupId__.components/src/test/resources</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>__groupId__.core</directory>
+                    <includes>
+                        <include>**/pom.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>__groupId__.core/src/main/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>__groupId__.core/src/test/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>__groupId__.core/src/main/resources</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>__groupId__.core/src/test/resources</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="${rootArtifactId}-content" dir="content" name="${rootArtifactId}-content">
+            <fileSets>
+                <fileSet packaged="false" encoding="UTF-8">
+                    <directory></directory>
+                    <includes>
+                        <include>README.txt</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>src/main/content/META-INF</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/content/jcr_root/apps/__appsFolderName__</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/content/jcr_root/content/__appsFolderName__</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/content/jcr_root/etc</directory>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*.js</exclude>
+                    </excludes>
+                </fileSet>
+                <fileSet filtered="false" encoding="UTF-8">
+                    <directory>src/main/content/jcr_root/etc</directory>
+                    <includes>
+                        <include>**/*.js</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+    </modules>
+</archetype-descriptor>
