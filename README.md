@@ -1,7 +1,6 @@
-How to create new archetype
+Installation 
 ===========================
-
-Install newly created archetype in M2 repo.
+Execute:
     mvn install
 
 

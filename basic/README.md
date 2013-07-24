@@ -7,11 +7,17 @@ Integrates with Cucumber. Has sample mock usage in unit tests using Powermock/Mo
 Use this archetype as a starting point for creating new CQ5-based project according to the best guidelines.
 
 
+Archetype Installation 
+===========================
+Execute:
+    mvn install
+
+
 Archetype Usage
 ========================
 
 1. Execute the following command in the directory where you want to generate new project:
-    mvn archetype:generate -DarchetypeRepository=http://<YOUR_NEXUS_HOST> -DarchetypeGroupId=com.yvv.cq5 -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
+    mvn archetype:generate -DarchetypeGroupId=com.yvv.cq5 -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
 
 2. Fill in required properties. 
 - groupId - generated project's groupId, used in pom files

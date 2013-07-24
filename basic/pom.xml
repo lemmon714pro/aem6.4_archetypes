@@ -13,7 +13,7 @@
     </description>
 
     <properties>
-        <internal.maven.server>http://moo-nexus.wdf.sap.corp:8081</internal.maven.server> <!-- point this URL to your Nexus/Archiva server -->
+        <internal.maven.server>http://repo1.maven.org/maven2</internal.maven.server> <!-- point this URL to your Nexus/Archiva server -->
     </properties>
 
     <!-- Tell Maven where artifacts can be downloaded from -->
@@ -48,21 +48,4 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!-- Tell Maven where releases and snapshots will be published -->
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>nexus-releases</id>
-            <name>Nexus Releases</name>
-            <url>${internal.maven.server}/nexus/content/repositories/wcms.releases/</url>
-            <layout>default</layout>
-        </repository>
-        <snapshotRepository>
-            <uniqueVersion>true</uniqueVersion>
-            <id>nexus</id>
-            <name>Nexus Snapshots</name>
-            <url>${internal.maven.server}/nexus/content/repositories/wcms.snapshots/</url>
-            <layout>default</layout>
-        </snapshotRepository>
-    </distributionManagement>
 </project>

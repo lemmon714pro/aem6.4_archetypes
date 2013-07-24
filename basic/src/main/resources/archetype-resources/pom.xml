@@ -36,25 +36,8 @@
 	<modules>
 	</modules>
 
-	<distributionManagement>
-		<repository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>nexus-releases</id>
-			<name>Nexus Releases</name>
-			<url>${internal.maven.server}/nexus/content/repositories/wcms.releases/</url>
-			<layout>default</layout>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>true</uniqueVersion>
-			<id>nexus</id>
-			<name>Nexus Snapshots</name>
-			<url>${internal.maven.server}/nexus/content/repositories/wcms.snapshots/</url>
-			<layout>default</layout>
-		</snapshotRepository>
-	</distributionManagement>
-
 	<properties>
-		<internal.maven.server>http://nexus:8081</internal.maven.server>
+		<internal.maven.server>http://repo1.maven.org/maven2</internal.maven.server>
 		<vendor.name>YOUR COMPANY NAME</vendor.name>
 		<!-- Sling plugin configuration -->
 		<sling.host>http://localhost</sling.host>
@@ -261,7 +244,7 @@
 		<repository>
 			<id>3rd-party.releases.adobe</id>
 			<name>Adobe Basel Public Repository</name>
-			<url>${internal.maven.server}/nexus/content/repositories/3rd-party.releases.adobe</url>
+                        <url>http://repo.adobe.com/nexus/content/groups/public</url>
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>
@@ -274,34 +257,7 @@
 			<id>3rd-party-releases</id>
 			<name>3rd Party Releases - Maven Central</name>
 			<layout>default</layout>
-			<url>${internal.maven.server}/nexus/content/repositories/3rd-party.releases.maven-central</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>build-releases</id>
-			<name>Internal Build Releases</name>
-			<layout>default</layout>
-			<url>${internal.maven.server}/nexus/content/repositories/build.releases</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>wcms-cq5</id>
-			<name>Internal WCMS CQ5</name>
-			<layout>default</layout>
-			<url>${internal.maven.server}/nexus/content/repositories/wcms-cq5</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>cuke4duke</id>
-			<name>Cuke4duke Repository</name>
-			<layout>default</layout>
-			<url>${internal.maven.server}/nexus/content/repositories/3rd-party.releases.cuke</url>
+			<url>http://repo1.maven.org/maven2</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -311,7 +267,7 @@
 		<pluginRepository>
 			<id>3rd-party.releases.adobe</id>
 			<name>Adobe Basel Public Repository</name>
-			<url>${internal.maven.server}/nexus/content/repositories/3rd-party.releases.adobe</url>
+			<url>http://repo.adobe.com/nexus/content/groups/public</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -323,7 +279,7 @@
 		<pluginRepository>
 			<id>3rd-party-releases</id>
 			<name>3rd Party Releases - Maven Central</name>
-			<url>${internal.maven.server}/nexus/content/repositories/3rd-party.releases.maven-central</url>
+			<url>http://repo1.maven.org/maven2</url>
 			<layout>default</layout>
 		</pluginRepository>
 	</pluginRepositories>
@@ -373,7 +329,7 @@
 					<configuration>
 						<systemPropertyVariables>
 							<ENV>${ENV}</ENV>
-                            <cucumber.options><![CDATA[-f html:target/cucumber -f junit:target/surefire-reports/junit-report.xml --monochrome --strict --tags ${cucumber.tags}]]></cucumber.options>
+                            <cucumber.options><![CDATA[-f html:target/cucumber -f junit:target/surefire-reports/junit-report.xml --monochrome --strict]]></cucumber.options>
                         </systemPropertyVariables>
                     </configuration>
                 </plugin>
