@@ -1,51 +1,52 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<!-- ====================================================================== -->
-	<!-- Root project configuration
-	
-		Contains:		
-		- Repositories and plugin repositories configuration
-		- Dependency and plugin management 
-		- Project properties setup
-		- Sonar profile configuration
-			
-		Entry point for project build and deployment:
-		
-			To deploy whole project use:
-				mvn clean install -PinstallPackage
-				
-			To install single bundle user in bundle project home:
-				mvn clean install -PinstallBundle
+    <!-- ====================================================================== -->
+    <!-- Root project configuration
 
-			You can override deployment configuration e.g.
-				mvn -Dsling.port=4503 clean install 
-			
-			Default configuration can be found in properties section
-	-->
-	<!-- ====================================================================== -->
+        Contains:
+        - Repositories and plugin repositories configuration
+        - Dependency and plugin management
+        - Project properties setup
+        - Sonar profile configuration
 
-	<groupId>${groupId}</groupId>
-	<artifactId>${artifactId}</artifactId>
-	<version>${version}</version>
-	<packaging>pom</packaging>
-	<name>${artifactName} - Application Build Project</name>
-	<description>Root WCMS project for ${artifactName}</description>
+        Entry point for project build and deployment:
 
-	<modules>
-	</modules>
+            To deploy whole project use:
+                mvn clean install -PinstallPackage
 
-	<properties>
-		<internal.maven.server>http://repo1.maven.org/maven2</internal.maven.server>
-		<vendor.name>YOUR COMPANY NAME</vendor.name>
-		<!-- Sling plugin configuration -->
-		<sling.host>http://localhost</sling.host>
-		<sling.port>4502</sling.port>
-		<sling.server>${sling.host}:${sling.port}</sling.server>
-		<sling.user>admin</sling.user>
-		<sling.password>admin</sling.password>
-		<sling.bundles.install.path>/apps/${appsFolderName}/install</sling.bundles.install.path>
+            To install single bundle user in bundle project home:
+                mvn clean install -PinstallBundle
+
+            You can override deployment configuration e.g.
+                mvn -Dsling.port=4503 clean install
+
+            Default configuration can be found in properties section
+    -->
+    <!-- ====================================================================== -->
+
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+    <packaging>pom</packaging>
+    <name>${artifactName} - Application Build Project</name>
+    <description>Root WCMS project for ${artifactName}</description>
+
+    <modules>
+    </modules>
+
+    <properties>
+        <internal.maven.server>http://repo1.maven.org/maven2</internal.maven.server>
+        <vendor.name>YOUR COMPANY NAME</vendor.name>
+        <cq.version>5.6.1</cq.version>
+        <!-- Sling plugin configuration -->
+        <sling.host>http://localhost</sling.host>
+        <sling.port>4502</sling.port>
+        <sling.server>${sling.host}:${sling.port}</sling.server>
+        <sling.user>admin</sling.user>
+        <sling.password>admin</sling.password>
+        <sling.bundles.install.path>/apps/${appsFolderName}/install</sling.bundles.install.path>
         <slice.version>3.1.0</slice.version>
         <!-- Sonar configuration -->
         <sonar.web.host>sonar:9000</sonar.web.host>
@@ -57,71 +58,29 @@
         <powermock.version>1.5</powermock.version>
         <selenium.version>2.32.0</selenium.version>
         <cucumber-jvm.version>1.1.3</cucumber-jvm.version>
-	</properties>
+    </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<!-- OSGi dependencies -->
-			<dependency>
-				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.core</artifactId>
-				<version>4.2.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.compendium</artifactId>
-				<version>4.2.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.scr.annotations</artifactId>
-				<version>1.8.0</version>
-			</dependency>
-			<!-- Utility dependencies -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.6.4</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>3.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<!-- Java APIs -->
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>2.5</version>
-				<scope>provided</scope>
-			</dependency>
-			<!-- CQ, Sling, JCR dependencies -->
-			<dependency>
-				<groupId>com.day.cq.wcm</groupId>
-				<artifactId>cq-wcm-api</artifactId>
-				<version>5.5.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.day.cq</groupId>
-				<artifactId>cq-commons</artifactId>
-				<version>5.5.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>org.apache.sling.api</artifactId>
-				<version>2.2.4</version>
-				<scope>provided</scope>
-			</dependency>
-			<!-- Slice dependencies -->
-			<dependency>
-				<groupId>com.cognifide.slice</groupId>
-				<artifactId>slice-core-api</artifactId>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Java APIs -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- CQ, Sling, JCR dependencies -->
+            <dependency>
+                <groupId>com.yurishchev.aem</groupId>
+                <artifactId>aem-dependencies</artifactId>
+                <version>${cq.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Slice dependencies -->
+            <dependency>
+                <groupId>com.cognifide.slice</groupId>
+                <artifactId>slice-core-api</artifactId>
                 <version>${slice.version}</version>
                 <scope>provided</scope>
             </dependency>
@@ -240,96 +199,98 @@
         </dependencies>
     </dependencyManagement>
 
-	<repositories>
-		<repository>
-			<id>3rd-party.releases.adobe</id>
-			<name>Adobe Basel Public Repository</name>
-                        <url>http://repo.adobe.com/nexus/content/groups/public</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>3rd-party-releases</id>
-			<name>3rd Party Releases - Maven Central</name>
-			<layout>default</layout>
-			<url>http://repo1.maven.org/maven2</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>3rd-party.releases.adobe</id>
-			<name>Adobe Basel Public Repository</name>
-			<url>http://repo.adobe.com/nexus/content/groups/public</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-		</pluginRepository>
-		<pluginRepository>
-			<id>3rd-party-releases</id>
-			<name>3rd Party Releases - Maven Central</name>
-			<url>http://repo1.maven.org/maven2</url>
-			<layout>default</layout>
-		</pluginRepository>
-	</pluginRepositories>
+    <repositories>
+        <repository>
+            <id>3rd-party.releases.adobe</id>
+            <name>Adobe Basel Public Repository</name>
+            <url>http://repo.adobe.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>3rd-party-releases</id>
+            <name>3rd Party Releases - Maven Central</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>com.day.jcr.vault</groupId>
-					<artifactId>content-package-maven-plugin</artifactId>
-					<version>0.0.20</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.0</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.6</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>2.3.7</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>2.7.1</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>2.10</version>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>2.5.2</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.12</version>
-					<configuration>
-						<systemPropertyVariables>
-							<ENV>${ENV}</ENV>
-                            <cucumber.options><![CDATA[-f html:target/cucumber -f junit:target/surefire-reports/junit-report.xml --monochrome --strict]]></cucumber.options>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>3rd-party.releases.adobe</id>
+            <name>Adobe Basel Public Repository</name>
+            <url>http://repo.adobe.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>3rd-party-releases</id>
+            <name>3rd Party Releases - Maven Central</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.day.jcr.vault</groupId>
+                    <artifactId>content-package-maven-plugin</artifactId>
+                    <version>0.0.20</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.3.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>2.7.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.12</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <ENV>${ENV}</ENV>
+                            <cucumber.options>
+                                <![CDATA[-f html:target/cucumber -f junit:target/surefire-reports/junit-report.xml --monochrome --strict]]></cucumber.options>
                         </systemPropertyVariables>
                     </configuration>
                 </plugin>
@@ -348,25 +309,26 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>2.0</version>
+                <version>2.1</version>
             </plugin>
         </plugins>
     </build>
 
-	<profiles>
-		<profile>
-			<id>sonar</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<sonar.jdbc.url>jdbc:mysql://${sonar.db.host}/sonardb?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
-				<sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName>
-				<sonar.jdbc.username>${sonar.db.username}</sonar.jdbc.username>
-				<sonar.jdbc.password>${sonar.db.password}</sonar.jdbc.password>
-				<sonar.host.url>http://${sonar.web.host}</sonar.host.url>
-			</properties>
-		</profile>
-	</profiles>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.jdbc.url>jdbc:mysql://${sonar.db.host}/sonardb?useUnicode=true&amp;characterEncoding=utf8
+                </sonar.jdbc.url>
+                <sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName>
+                <sonar.jdbc.username>${sonar.db.username}</sonar.jdbc.username>
+                <sonar.jdbc.password>${sonar.db.password}</sonar.jdbc.password>
+                <sonar.host.url>http://${sonar.web.host}</sonar.host.url>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

@@ -17,7 +17,7 @@ import com.google.inject.Module;
 
 public class Activator implements BundleActivator {
 
-    private static final String BUNDLE_NAME_FILTER = "com\\.yvv\\.${appsFolderName}\\..*";
+    private static final String BUNDLE_NAME_FILTER = "com\\.yurishchev\\.${appsFolderName}\\..*";
 
     private static final String BASE_PACKAGE = "${package}";
 

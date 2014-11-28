@@ -17,7 +17,7 @@ Archetype Usage
 ========================
 
 1. Execute the following command in the directory where you want to generate new project:
-    mvn archetype:generate -DarchetypeGroupId=com.yvv.cq5 -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
+    mvn archetype:generate -DarchetypeGroupId=com.yurishchev.aem -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
 
 2. Fill in required properties. 
 - groupId - generated project's groupId, used in pom files
@@ -28,11 +28,11 @@ Archetype Usage
 - packageGroup - This is the group identifier for the CQ package. Used within the CQ Package Manager and Package Share.
 
 Example:
-    mvn archetype:generate -DarchetypeGroupId=com.yvv.cq5 -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
+    mvn archetype:generate -DarchetypeGroupId=com.yurishchev.aem -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
 
-    Define value for property 'groupId': com.yvv.sampleapp
+    Define value for property 'groupId': com.yurishchev.sampleapp
     Define value for property 'artifactId': sampleapp-build
-    Define value for property 'package': com.yvv.sampleapp
+    Define value for property 'package': com.yurishchev.sampleapp
     Define value for property 'version': 1.0-SNAPSHOT
     Define value for property 'appsFolderName': sampleapp
     Define value for property 'artifactName': Sample Application

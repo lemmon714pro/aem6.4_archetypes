@@ -3,11 +3,10 @@
     jcr:primaryType="cq:Page">
     <clientlib-all/>
     <clientlib-bootstrap/>
-    <clientlib-html5shiv/>
+    <clientlib-ie/>
     <favicon.ico/>
     <jcr:content
         cq:doctype="html_5"
-        cq:lastModifiedBy="admin"
         jcr:primaryType="nt:unstructured"
         jcr:title="${artifactName} Demo Design"
         sling:resourceType="wcm/core/components/designer"/>

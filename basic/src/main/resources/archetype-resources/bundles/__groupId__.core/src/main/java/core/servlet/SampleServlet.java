@@ -19,7 +19,7 @@ import ${package}.core.configuration.SampleConfiguration;
 
 @SlingServlet(paths = "/bin/test/sample")
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "Sample Servlet"),
-             @Property(name = Constants.SERVICE_VENDOR, value = "YOUR_COMPANY")})
+             @Property(name = Constants.SERVICE_VENDOR, value = "<Your Company>")})
 public class SampleServlet extends SlingAllMethodsServlet {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(SlingAllMethodsServlet.class);

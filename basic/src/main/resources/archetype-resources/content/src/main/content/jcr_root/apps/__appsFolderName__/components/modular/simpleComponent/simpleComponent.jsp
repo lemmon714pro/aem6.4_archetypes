@@ -1,10 +1,8 @@
-<%@page session="false" pageEncoding="utf-8"
-	contentType="text/html; charset=utf-8"%>
-<%@include file="/libs/foundation/global.jsp" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="slice" uri="http://cognifide.com/jsp/slice"%>
-<%@page import="${package}.components.model.SimpleComponentModel"%>
+<%@page session="false" pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@include file="/apps/${appsFolderName}/global.jsp" %>
 
-<slice:lookup var="model" type="<%=SimpleComponentModel.class%>" />
+<slice:lookup var="model" type="<%=${package}.components.model.SimpleComponentModel.class%>" />
+<jsp:useBean id="model" type="${package}.components.model.SimpleComponentModel" />
+
 <h2>This document was last modified on: ${model.lastModified}</h2>
 <h3>Document's custom text is: ${model.text}</h3>

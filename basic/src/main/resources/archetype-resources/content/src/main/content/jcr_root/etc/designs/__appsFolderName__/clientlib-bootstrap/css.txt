@@ -1,4 +1,3 @@
 #base=css
 bootstrap.css
-bootstrap-responsive.css
-docs.css
+bootstrap-theme.css

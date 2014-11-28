@@ -45,7 +45,7 @@
 <div class="container">
     <h3>Generate your new project with the following command:</h3>
     <pre class="prettyprint">
-      mvn archetype:generate -DarchetypeGroupId=com.yvv.cq5 -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
+      mvn archetype:generate -DarchetypeGroupId=com.yurishchev.aem -DarchetypeVersion=1.0 -DarchetypeArtifactId=basic-archetype
     </pre>
 
     <div class="marketing">

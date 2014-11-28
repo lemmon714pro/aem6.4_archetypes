@@ -3,7 +3,7 @@
     jcr:description="${artifactName} - sample page"
     jcr:primaryType="cq:Template"
     jcr:title="Sample Page"
-    allowedPaths="/content/(/.*)?"
+    allowedPaths="/content/${appsFolderName}(/.*)?"
     ranking="{Long}100">
     <jcr:content
         cq:designPath="/etc/designs/${appsFolderName}"

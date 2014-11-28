@@ -1,13 +1,25 @@
-<%@include file="/libs/foundation/global.jsp"%>
+<%@page session="false" pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@include file="/apps/${appsFolderName}/global.jsp" %>
+
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<cq:includeClientLib categories="bootstrap" />
-	<cq:includeClientLib categories="apps.${appsFolderName}.all" />
-	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	      <cq:includeClientLib js="html5shiv"/>
-	    <![endif]-->
-	<cq:include script="/libs/wcm/core/components/init/init.jsp" />
+
+    <!--[if IE 8]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script>
+        if (typeof console === "undefined" || typeof console.log === "undefined") {
+            console = {};
+            console.log = function() {};
+        }
+    </script>
+    <![endif]-->
+
+    <cf:include script="/apps/${appsFolderName}/init.jsp" />
+
+    <cq:includeClientLib css="${appsFolderName}.bootstrap" />
+    <cq:includeClientLib css="${appsFolderName}.master.all" />
 </head>

@@ -10,6 +10,7 @@
     <packaging>bundle</packaging>
     <name>${artifactName} - Core Bundle</name>
     <description>Core project for ${artifactName} bundles. Contains shared code.</description>
+
     <properties>
         <bundle.export>
             ${package}.core.bundle,
