@@ -15,6 +15,7 @@
     </description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <internal.maven.server>http://repo1.maven.org/maven2</internal.maven.server>
         <!-- point this URL to your Nexus/Archiva server -->
     </properties>

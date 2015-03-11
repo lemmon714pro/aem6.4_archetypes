@@ -88,6 +88,7 @@
                             <groupId>com.cognifide.slice</groupId>
                             <artifactId>slice-mapper-api</artifactId>
                         </embedded>
+<!-- commented out for slice 4.* and higher
                         <embedded>
                             <groupId>com.cognifide.slice</groupId>
                             <artifactId>slice-validation-api</artifactId>
@@ -98,11 +99,12 @@
                         </embedded>
                         <embedded>
                             <groupId>com.cognifide.slice-addon</groupId>
-                            <artifactId>slice-cq56</artifactId>
+                            <artifactId>slice-cq56-taglib</artifactId>
                         </embedded>
+-->
                         <embedded>
                             <groupId>com.cognifide.slice-addon</groupId>
-                            <artifactId>slice-cq56-taglib</artifactId>
+                            <artifactId>slice-aem60</artifactId>
                         </embedded>
                         <embedded>
                             <groupId>javax.inject</groupId>
@@ -159,24 +161,6 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>sonar</id>
-            <properties>
-                <sonar.profile>WCMS Web Profile</sonar.profile>
-                <sonar.language>web</sonar.language>
-            </properties>
-        </profile>
-        <profile>
-            <id>sonarJavaScript</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <sonar.branch>Javascript</sonar.branch>
-                <sonar.profile>WCMS JS Profile</sonar.profile>
-                <sonar.language>js</sonar.language>
-            </properties>
-        </profile>
     </profiles>
 
     <dependencies>
@@ -206,6 +190,7 @@
             <groupId>com.cognifide.slice</groupId>
             <artifactId>slice-mapper-api</artifactId>
         </dependency>
+<!-- commented out for slice 4.* and higher
         <dependency>
             <groupId>com.cognifide.slice</groupId>
             <artifactId>slice-validation-api</artifactId>
@@ -216,11 +201,12 @@
         </dependency>
         <dependency>
             <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-cq56</artifactId>
+            <artifactId>slice-cq56-taglib</artifactId>
         </dependency>
+-->
         <dependency>
             <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-cq56-taglib</artifactId>
+            <artifactId>slice-aem60</artifactId>
         </dependency>
         <dependency>
             <groupId>com.adobe.granite</groupId>

@@ -61,7 +61,6 @@
 %><%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %><%
 
 %><%@taglib prefix="slice" uri="http://cognifide.com/jsp/slice" %><%
-%><%@taglib prefix="cf" uri="http://cognifide.com/jsp/slice/cq" %><%
 
 %><cq:defineObjects /><%
 %><cq:setContentBundle source="page" /><%

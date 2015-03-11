@@ -1,7 +1,5 @@
-<%@page session="false" pageEncoding="utf-8"
-        contentType="text/html; charset=utf-8"%>
-<%@include file="/libs/foundation/global.jsp" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="false" pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@include file="/apps/${appsFolderName}/global.jsp" %>
 
 
 <!-- Navbar

@@ -18,7 +18,7 @@
     </script>
     <![endif]-->
 
-    <cf:include script="/apps/${appsFolderName}/init.jsp" />
+    <cq:include script="/apps/${appsFolderName}/init.jsp" />
 
     <cq:includeClientLib css="${appsFolderName}.bootstrap" />
     <cq:includeClientLib css="${appsFolderName}.master.all" />

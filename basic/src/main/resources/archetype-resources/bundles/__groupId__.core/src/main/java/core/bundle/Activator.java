@@ -1,19 +1,17 @@
 package ${package}.core.bundle;
 
-import java.util.List;
-
+import com.cognifide.slice.api.injector.InjectorRunner;
+import com.cognifide.slice.commons.SliceModulesFactory;
+import com.cognifide.slice.cq.module.CQModulesFactory;
+import com.google.inject.Module;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cognifide.slice.api.context.ContextScope;
-import com.cognifide.slice.api.injector.InjectorRunner;
-import com.cognifide.slice.commons.SliceModulesFactory;
-import com.cognifide.slice.core.internal.context.SliceContextScope;
-import com.cognifide.slice.cq.module.CQModulesFactory;
-import com.cognifide.slice.validation.ValidationModulesFactory;
-import com.google.inject.Module;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Activator implements BundleActivator {
 
@@ -28,19 +26,18 @@ public class Activator implements BundleActivator {
     @Override
     public void start(BundleContext bundleContext) throws Exception {
         logger.debug("Entering BundleActivator.start");
-        final ContextScope scope = new SliceContextScope();
         final InjectorRunner injectorRunner =
-            new InjectorRunner(bundleContext, INJECTOR_NAME, scope);
+                new InjectorRunner(bundleContext, INJECTOR_NAME, BUNDLE_NAME_FILTER, BASE_PACKAGE);
         logger.debug("Configuring Injector - {}, for bundles - {}",
-                     INJECTOR_NAME, BUNDLE_NAME_FILTER);
-        List<Module> sliceModules = SliceModulesFactory.createModules(
-            bundleContext, INJECTOR_NAME, BUNDLE_NAME_FILTER, BASE_PACKAGE);
-        List<Module> cqModules = CQModulesFactory.createModules();
-        List<Module> validationModules = ValidationModulesFactory.createModules();
+                INJECTOR_NAME, BUNDLE_NAME_FILTER);
+        final List<Module> sliceModules = SliceModulesFactory.createModules(bundleContext);
+        final List<Module> cqModules = CQModulesFactory.createModules();
+        final List<Module> customModules = createCustomModules();
 
         injectorRunner.installModules(sliceModules);
         injectorRunner.installModules(cqModules);
-        injectorRunner.installModules(validationModules);
+        injectorRunner.installModules(customModules);
+
         logger.debug("Starting injector runner");
         injectorRunner.start();
         logger.debug("Leaving BundleActivator.start");
@@ -49,5 +46,10 @@ public class Activator implements BundleActivator {
     @Override
     public void stop(BundleContext context) throws Exception {
 
+    }
+
+    private List<Module> createCustomModules() {
+        //populate the list with your modules
+        return new ArrayList<Module>();
     }
 }

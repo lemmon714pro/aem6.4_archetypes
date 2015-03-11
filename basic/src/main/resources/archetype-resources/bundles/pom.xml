@@ -103,6 +103,7 @@
             <groupId>com.cognifide.slice</groupId>
             <artifactId>slice-mapper-api</artifactId>
         </dependency>
+<!-- commented out for slice 4.* and higher
         <dependency>
             <groupId>com.cognifide.slice</groupId>
             <artifactId>slice-validation-api</artifactId>
@@ -113,11 +114,12 @@
         </dependency>
         <dependency>
             <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-cq56</artifactId>
+            <artifactId>slice-cq56-taglib</artifactId>
         </dependency>
+-->
         <dependency>
             <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-cq56-taglib</artifactId>
+            <artifactId>slice-aem60</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -164,7 +166,6 @@
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>maven-sling-plugin</artifactId>
-                <version>2.1.0</version>
                 <configuration>
                     <slingUrl>${sling.server}/crx/repository/crx.default</slingUrl>
                     <slingUrlSuffix>${sling.bundles.install.path}</slingUrlSuffix>
@@ -174,7 +175,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-scr-plugin</artifactId>
-                <version>1.9.0</version>
                 <executions>
                     <execution>
                         <id>generate-scr-descriptor</id>
@@ -188,13 +188,6 @@
                         </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-simple</artifactId>
-                        <version>1.6.4</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -221,13 +214,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-        <profile>
-            <id>sonar</id>
-            <properties>
-                <sonar.profile>WCMS Profile</sonar.profile>
-                <sonar.language>java</sonar.language>
-            </properties>
         </profile>
     </profiles>
 </project>
