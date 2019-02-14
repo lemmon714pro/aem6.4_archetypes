@@ -1,31 +1,40 @@
 package ${package}.components.model;
 
-import java.util.Date;
-
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cognifide.slice.mapper.annotation.JcrProperty;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.util.Date;
 
-import com.cognifide.slice.mapper.annotation.SliceResource;
-import com.cognifide.slice.api.model.InitializableModel;
-import com.google.inject.Inject;
-
-@SliceResource
-public class SimpleComponentModel implements InitializableModel {
+@Model(adaptables = Resource.class)
+public class SimpleComponentModel {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleComponentModel.class);
 
-    @JcrProperty
+    @Inject
     private String text;
 
-    @JcrProperty("jcr:lastModified")
+    @Inject
+    @Named("jcr:lastModified")
     private Date lastModified;
 
-    @Inject
-    public SimpleComponentModel(final Resource resource) {
+    public SimpleComponentModel(Resource resource) {
         logger.debug(resource.getPath());
+    }
+
+    @PostConstruct
+    private void init() {
+        logger.debug("Entering SimpleComponentModel.afterCreated");
+        if (text == null) {
+            logger.debug("There is no text property in the resource");
+        }
+        if (lastModified == null) {
+            logger.debug("There is no lastModifiedBy property in the resource");
+        }
     }
 
     public String getText() {
@@ -34,16 +43,5 @@ public class SimpleComponentModel implements InitializableModel {
 
     public Date getLastModified() {
         return lastModified;
-    }
-
-    @Override
-    public void afterCreated() {
-        logger.debug("Entering SimpleComponentModel.afterCreated");
-        if (text == null) {
-            logger.debug("There is no text property in the resource");
-        }
-        if (lastModified == null) {
-            logger.debug("There is no lastModifiedBy property in the resource");
-        }
     }
 }

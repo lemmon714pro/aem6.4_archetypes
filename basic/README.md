@@ -2,7 +2,6 @@ Description
 ========================
 CQ5 Basic Archetype. 
 Contains OSGI modules with Slice activator, includes sample CQ project based on Twitter Bootstrap.
-Contains profile for executing local SCA analysis (Checkstyle/PMD/FindBugs are used for that) and automatic SCA using Sonar QA platform.
 Integrates with Cucumber. Has sample mock usage in unit tests using Powermock/Mockito.
 Use this archetype as a starting point for creating new CQ5-based project according to the best guidelines.
 

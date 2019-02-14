@@ -9,8 +9,6 @@
     <description>
         Promotes best practices of organizing typical Adobe CQ project structure.
         Generates sample CQ project based on Twitter Bootstrap.
-        Contains several profiles (Checkstyle/PMD/FindBugs) for executing local static code analysis and automatic SCA
-        using Sonar QA platform.
         Integrates with Cucumber. Contains sample unit tests (Powermock/Mockito - based).
     </description>
 

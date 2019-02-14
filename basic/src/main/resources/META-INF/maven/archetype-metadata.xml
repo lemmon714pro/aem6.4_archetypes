@@ -26,15 +26,6 @@
         </requiredProperty>
     </requiredProperties>
 
-    <fileSets>
-        <fileSet filtered="false" packaged="false" encoding="UTF-8">
-            <directory>qa-rulesets</directory>
-            <includes>
-                <include>**/*.xml</include>
-            </includes>
-        </fileSet>
-    </fileSets>
-
     <modules>
         <module id="${rootArtifactId}-bundles" dir="bundles" name="${rootArtifactId}-bundles">
             <fileSets>

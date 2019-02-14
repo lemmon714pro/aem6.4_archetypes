@@ -9,7 +9,7 @@
     <artifactId>${groupId}.components</artifactId>
     <packaging>bundle</packaging>
     <name>${artifactName} - Components Bundle</name>
-    <description>OSGi bundle for ${artifactName} components code and Slice models</description>
+    <description>OSGi bundle for ${artifactName} components code and Sling models</description>
 
     <properties>
         <bundle.export>
@@ -17,5 +17,19 @@
         </bundle.export>
         <bundle.private>
         </bundle.private>
+        <sling.model.packages>
+            ${package}.components.model
+        </sling.model.packages>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.models.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-atinject_1.0_spec</artifactId>
+        </dependency>
+    </dependencies>
 </project>

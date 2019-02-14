@@ -33,13 +33,15 @@
     </modules>
 
     <properties>
-        <bundle.activator></bundle.activator>
-        <bundle.export></bundle.export>
-        <bundle.import>*;resolution:=required</bundle.import>
-        <bundle.embed></bundle.embed>
-        <bundle.private></bundle.private>
-        <bundle.exclude.imports></bundle.exclude.imports>
-        <bundle.exclude.exports></bundle.exclude.exports>
+        <bundle.activator/>
+        <bundle.export/>
+        <bundle.import>javax.annotation;version=0.0.0.1_008_JavaSE,*;resolution:=required</bundle.import>
+        <bundle.embed/>
+        <bundle.private/>
+        <bundle.exclude.imports/>
+        <bundle.exclude.exports/>
+        <bundle.include.resource>{maven-resources}</bundle.include.resource>
+        <sling.model.packages/>
     </properties>
 
     <dependencies>
@@ -56,71 +58,70 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-foundation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq</groupId>
-            <artifactId>cq-commons</artifactId>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.adobe.granite</groupId>
-            <artifactId>com.adobe.granite.xssprotection</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-core-api</artifactId>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.scr.annotations</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-core</artifactId>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-mapper</artifactId>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.commons.mime</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-mapper-api</artifactId>
-        </dependency>
-<!-- commented out for slice 4.* and higher
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-validation-api</artifactId>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.commons.json</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-validation</artifactId>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-cq56-taglib</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
--->
         <dependency>
-            <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-aem60</artifactId>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.commons.osgi</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.settings</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.jcr.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.jcr.jcr-wrapper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
+
+        <!-- Private Adobe APIs -->
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>uber-jar</artifactId>
+            <classifier>apis</classifier>
+        </dependency>
+
+        <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -134,12 +135,14 @@
             <artifactId>powermock-api-mockito</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
         </dependency>
+
+        <!-- Custom bundles -->
         <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.scr.annotations</artifactId>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
     </dependencies>
 
@@ -152,7 +155,6 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Build-Info>${build.info}</Build-Info>
                         <Export-Package>${bundle.export}</Export-Package>
                         <Private-Package>${bundle.private}</Private-Package>
                         <Import-Package>${bundle.import}</Import-Package>
@@ -160,6 +162,8 @@
                         <Excluded-Imports>${bundle.exclude.imports}</Excluded-Imports>
                         <Excluded-Exports>${bundle.exclude.exports}</Excluded-Exports>
                         <Bundle-Activator>${bundle.activator}</Bundle-Activator>
+                        <Include-Resource>${bundle.include.resource}</Include-Resource>
+                        <Sling-Model-Packages>${sling.model.packages}</Sling-Model-Packages>
                     </instructions>
                 </configuration>
             </plugin>

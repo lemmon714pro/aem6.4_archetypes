@@ -27,6 +27,39 @@
     <name>${artifactName} - WCMS Content Package</name>
     <description>Project contains jcr tree for ${artifactName}</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>uber-jar</artifactId>
+            <classifier>apis</classifier>
+        </dependency>
+
+        <!-- Own bundles -->
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${groupId}.components</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${groupId}.core</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.day.commons</groupId>
+            <artifactId>day-commons-jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.jsp.taglib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <sourceDirectory>src/main/content/jcr_root</sourceDirectory>
         <resources>
@@ -71,57 +104,6 @@
                             <groupId>${groupId}</groupId>
                             <artifactId>${groupId}.core</artifactId>
                         </embedded>
-                        <!-- Slice -->
-                        <embedded>
-                            <groupId>com.cognifide.slice</groupId>
-                            <artifactId>slice-core-api</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.cognifide.slice</groupId>
-                            <artifactId>slice-core</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.cognifide.slice</groupId>
-                            <artifactId>slice-mapper</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.cognifide.slice</groupId>
-                            <artifactId>slice-mapper-api</artifactId>
-                        </embedded>
-<!-- commented out for slice 4.* and higher
-                        <embedded>
-                            <groupId>com.cognifide.slice</groupId>
-                            <artifactId>slice-validation-api</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.cognifide.slice</groupId>
-                            <artifactId>slice-validation</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.cognifide.slice-addon</groupId>
-                            <artifactId>slice-cq56-taglib</artifactId>
-                        </embedded>
--->
-                        <embedded>
-                            <groupId>com.cognifide.slice-addon</groupId>
-                            <artifactId>slice-aem60</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>javax.inject</groupId>
-                            <artifactId>com.springsource.javax.inject</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>org.aopalliance</groupId>
-                            <artifactId>com.springsource.org.aopalliance</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.google.inject</groupId>
-                            <artifactId>guice</artifactId>
-                        </embedded>
-                        <embedded>
-                            <groupId>org.ops4j</groupId>
-                            <artifactId>peaberry</artifactId>
-                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -162,87 +144,4 @@
             </build>
         </profile>
     </profiles>
-
-    <dependencies>
-        <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>${groupId}.components</artifactId>
-            <version>${version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>${groupId}.core</artifactId>
-            <version>${version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-mapper</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-mapper-api</artifactId>
-        </dependency>
-<!-- commented out for slice 4.* and higher
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-validation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cognifide.slice</groupId>
-            <artifactId>slice-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-cq56-taglib</artifactId>
-        </dependency>
--->
-        <dependency>
-            <groupId>com.cognifide.slice-addon</groupId>
-            <artifactId>slice-aem60</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.granite</groupId>
-            <artifactId>com.adobe.granite.xssprotection</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.commons</groupId>
-            <artifactId>day-commons-jstl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-taglib</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.scripting.jsp.taglib</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-foundation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq</groupId>
-            <artifactId>cq-commons</artifactId>
-        </dependency>
-    </dependencies>
 </project>
